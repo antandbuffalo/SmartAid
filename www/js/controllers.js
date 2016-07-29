@@ -1,9 +1,5 @@
 angular.module('app.controllers', [])
 
-.controller('postsCtrl', function($scope) {
-
-})
-
 .controller('cartTabDefaultPageCtrl', function($scope) {
 
 })
@@ -11,7 +7,7 @@ angular.module('app.controllers', [])
 .controller('cloudTabDefaultPageCtrl', function($scope) {
 
 })
-   
+
 .controller('signupCtrl', function($scope) {
 
 })

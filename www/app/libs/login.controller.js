@@ -1,5 +1,5 @@
 angular.module('app').controller('loginCtrl', function($scope, mainService) {
-  $scope.main.showNavButton = true;
+  $scope.main.showNavButton = false;
   $scope.login = function() {
     
   };
