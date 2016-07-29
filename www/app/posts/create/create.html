@@ -1,0 +1,43 @@
+<ion-modal-view>
+	
+	<ion-header-bar align-title="center" class="bar-calm">
+	  <div class="buttons">
+	    <button class="button" ng-click="closeModal()">Cancel</button>
+	  </div>
+	  <h1 class="title">New Post</h1>
+	  <div class="buttons">
+	    <button class="button" ng-click="createPost()">Post</button>
+	  </div>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<div class="list">
+            <label class="item item-input">
+              <input ng-model="main.postRequest.description" type="text" placeholder="Description">
+            </label>	  
+            <label class="item item-input">
+              <input ng-model="main.postRequest.amount_expected" type="number" placeholder="Amount Expected">
+            </label>	  
+            <label class="item item-input">
+              <input type="file" class="upload" ng-model="main.postRequest.file" ngf-select="fileTest()"/>
+            </label>	  
+            
+        </div>
+	</ion-content>
+			    
+
+
+
+</ion-modal-view>
+
+<style type="text/css">
+	label {
+   pointer: cursor;
+   /* Style as you please, it will become the visible UI component. */
+}
+
+#upload-photo {
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+}
+</style>
