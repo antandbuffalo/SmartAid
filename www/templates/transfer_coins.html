@@ -17,7 +17,7 @@
             <div class="list list-inset">
               <label class="item item-input">
                 <i class="icon ion-social-bitcoin placeholder-icon"></i>
-                <input type="text" placeholder="Enter Coins to Transfer">
+                <input type="number" placeholder="Enter Coins to Transfer" ng-model="request.coinsToTransfer">
               </label>
             </div>
 
@@ -27,17 +27,17 @@
                 <div class="input-label">
                   Bank
                 </div>
-                <select>
-                  <option>DBS</option>
-                  <option selected>UBS</option>
-                  <option>ODBC</option>
+                <select ng-model="request.selectedBank">
+                  <option value="dbs">DBS</option>
+                  <option value="ubs">UBS</option>
+                  <option value="ocbc">ODBC</option>
                 </select>
               </label>
 
             </div>
 
 
-              <a  id="login-button1" class=" button button-stable  button-block ">Transfer</a>
+              <a  id="login-button1" class=" button button-stable  button-block " ng-click="transfer()">Transfer</a>
 
             </div>
     </ion-content>

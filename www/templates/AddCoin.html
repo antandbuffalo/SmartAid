@@ -17,45 +17,38 @@
             <div class="list list-inset">
               <label class="item item-input">
                 <i class="icon ion-card placeholder-icon"></i>
-                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="Card Number" ng-model="request.cardNumber">
               </label>
             </div>
 
             <div class="list list-inset">
               <label class="item item-input">
                 <i class="icon ion-clock placeholder-icon"></i>
-                <input type="text" placeholder="Exp Date">
-              </label>
-            </div>
-
-            <div class="list list-inset">
-              <label class="item item-input">
-                <i class="icon ion-card placeholder-icon"></i>
-                <input type="password" placeholder="Card Number">
+                <input type="text" placeholder="Exp Date" ng-model="request.expDate">
               </label>
             </div>
 
             <div class="list list-inset">
               <label class="item item-input">
                 <i class="icon ion-ios-eye placeholder-icon"></i>
-                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="CVV" ng-model="request.cvv" maxlength="3">
               </label>
             </div>
 
             <div class="list list-inset">
               <label class="item item-input">
                 <i class="icon ion-social-usd placeholder-icon"></i>
-                <input type="text" placeholder="Amount in USD">
+                <input type="text" placeholder="Amount in USD" ng-model="request.amount">
               </label>
             </div>
 
 
               <label class="item item-input item-stacked-label" style="margin-top:10px">
-                <span class="input-label" id="coin_cal">200 Coins</span>
-                <span class="input-label" id="dollor_cal"> 980 USD</span>
+                <span class="input-label" id="coin_cal">{{coins | number}} Coins</span>
+                <span class="input-label" id="dollor_cal"> {{actualAmount | number}} USD</span>
               </label>
 
-              <a  id="login-button1" class=" button button-stable  button-block ">Transfer</a>
+              <a  id="login-button1" class=" button button-stable  button-block" ng-click="transfer()">Transfer</a>
 
                 <!-- 
               <a class="item item-icon-left" href="#">

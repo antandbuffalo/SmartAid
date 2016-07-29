@@ -26,12 +26,14 @@ angular.module('app.routes', [])
   .state('addcoin', {
     url: '/addcoin',
         templateUrl: 'templates/AddCoin.html',
+        controller: 'addcoinController'
         
   })
 
   .state('TransferCoins', {
     url: '/TransferCoins',
         templateUrl: 'templates/transfer_coins.html',
+        controller: 'transferCoinsController'
         
   })
 
