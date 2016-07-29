@@ -17,6 +17,12 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('posts', {
+    url: '/posts',
+        templateUrl: 'templates/posts.html',
+        controller: 'postsCtrl'
+  })
+
   .state('cartTabDefaultPage', {
     url: '/page3',
     templateUrl: 'templates/cartTabDefaultPage.html',
@@ -45,10 +51,10 @@ angular.module('app.routes', [])
     controller: 'loginCtrl'
   })
 
-  .state('signup', {
-    url: '/page6',
-    templateUrl: 'templates/signup.html',
-    controller: 'signupCtrl'
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html'
+    
   })
 
   .state('tabsController.postDetails', {
