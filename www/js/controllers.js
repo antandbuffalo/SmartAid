@@ -16,7 +16,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('transferCoinsController', function($scope, mainService) {
+.controller('transferCoinsController', function($scope, $ionicModal, mainService) {
 	$scope.request = {};
 
 	$scope.request.selectedBank = "dbs";
@@ -27,10 +27,27 @@ angular.module('app.controllers', [])
 			$ionicLoading.show({ template: 'Coins Transferred', noBackdrop: true, duration: 3000 });
 
 	 	}, mainService.errorCall);
-
 	};
 
+	$scope.transferOffline = function() {
+		$scope.qrcodeData = $scope.request.coinsToTransfer * 10;
+		$scope.modal.show();
+	};
+
+	$ionicModal.fromTemplateUrl('app/qrcode/qrcode.modal.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modal = modal;
+	  });
+
+	  $scope.closeModal = function() {
+	    $scope.modal.hide();
+	 };
+
 })
+
+
 
 .controller('addcoinController', function($scope, $ionicLoading, $filter, mainService) {
 	 $scope.request = {};
