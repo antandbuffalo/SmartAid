@@ -23,6 +23,20 @@ angular.module('app.routes', [])
         controller: 'postsCtrl'
   })
 
+  .state('addcoin', {
+    url: '/addcoin',
+        templateUrl: 'templates/AddCoin.html',
+        
+  })
+
+  .state('TransferCoins', {
+    url: '/TransferCoins',
+        templateUrl: 'templates/transfer_coins.html',
+        
+  })
+
+  
+
   .state('cartTabDefaultPage', {
     url: '/page3',
     templateUrl: 'templates/cartTabDefaultPage.html',

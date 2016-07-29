@@ -11,3 +11,26 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+#markettext{
+	font-size: 10px;
+    color: cadetblue;
+}
+#DollorVal{
+	font-size: 14px;
+    padding-left: 10px;
+    color: red;
+    font-weight: bold;
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+#coin_cal{
+		font-size: 14px;
+		color: red;
+        font-weight: bold;
+
+}
+#dollor_cal{
+
+}
