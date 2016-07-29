@@ -1,6 +1,5 @@
-angular.module('app').controller('loginCtrl', function($scope) {
+angular.module('app').controller('loginCtrl', function($scope, mainService) {
   $scope.main.showNavButton = false;
-
   $scope.login = function() {
     alert("Login raijni");
   };
