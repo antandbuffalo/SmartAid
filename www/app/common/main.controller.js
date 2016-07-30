@@ -1,10 +1,15 @@
 angular.module('app').controller('mainController', function($rootScope, $scope, $ionicModal, Upload, mainService) {
   $scope.main = {};
   $scope.main.spinner = false;
-  $scope.main.isLogin = false;
+  $scope.main.isLogin = false;  
   $scope.main.newPostButton = false;
   $scope.main.postRequest = {};
-  
+
+  $scope.main.constants = {
+    "MY_KEY": "",
+     Bits: 512
+  }
+
 
 $ionicModal.fromTemplateUrl('app/posts/create/create.html', {
     scope: $scope,
@@ -22,10 +27,10 @@ $ionicModal.fromTemplateUrl('app/posts/create/create.html', {
   	var request = {
   		"image": "",
   		"description": $scope.main.postRequest.description,
-  		"amount": $scope.main.postRequest.amount
+  		"amount": $scope.main.amountCalculated,
+      "public_key": localStorage.getItem("UserPublicKey")
   	};
     $scope.main.spinner = true;
-
   	Upload.base64DataUrl($scope.main.postRequest.image).then(function(urls){
   	 request.image = urls;
       var requestUrl = "http://smartaid-nodejstechdemo.rhcloud.com/posts";      
@@ -36,12 +41,20 @@ $ionicModal.fromTemplateUrl('app/posts/create/create.html', {
         $scope.closeModal();
         console.log(data);      
         $scope.main.spinner = false;
+        $rootScope.$broadcast("NewPostAdded");
 
       }, function(error) {      
         $scope.main.spinner = false;
       });
     });
   };
+  $scope.$watch('main.postRequest.amount', function(newValue, oldValue) {
+    if(newValue) {
+      var coins = (newValue / 10) + "";
+      $scope.main.coinsCalculated = coins.split(".")[0];
+      $scope.main.amountCalculated = $scope.main.coinsCalculated * 10;
+    }
+   });
   // Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
@@ -58,5 +71,14 @@ $ionicModal.fromTemplateUrl('app/posts/create/create.html', {
   $scope.main.createNewPost = function() {
 	$scope.modal.show();
   };
+
+  $scope.main.selectMenu = function(type) {
+    if(type == "posts" || type == "myposts") {
+      $scope.main.newPostButton = true;
+    }
+    else {
+      $scope.main.newPostButton = false;
+    }
+  }
 
 });

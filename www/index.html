@@ -85,29 +85,33 @@
                 <div id="profile_pic_div">
                   <img id="profile_pic" src="http://ionicframework.com/img/docs/mcfly.jpg">
 
-                  <h3><span>Rajinikanth<span></h3>
+                  <h3><span>{{user.name}}<span></h3>
                 </div>
            
 
                 <ion-list>
-                <ion-item menu-close href="#/posts">
+                <ion-item menu-close href="#/posts" ng-click="main.selectMenu('posts')">
                   Home
                 </ion-item>
 
-                <ion-item menu-close href="#/addcoin">
+                 <ion-item menu-close href="#/myposts" ng-click="main.selectMenu('myposts')">
+                  My Posts
+                </ion-item>
+
+                <ion-item menu-close href="#/addcoin" ng-click="main.selectMenu('addcoin')">
                   Add Coins
                 </ion-item>
 
-                <ion-item menu-close href="#/TransferCoins">
+                <ion-item menu-close href="#/TransferCoins" ng-click="main.selectMenu('transfercoin')">
                   Transfer Coins
                 </ion-item>
                 
-                <ion-item menu-close href="#/profile">
+                <ion-item menu-close href="#/profile" ng-click="main.selectMenu('profile')">
                   profile
                 </ion-item>
                 
-                <ion-item menu-close href="#/app/playlists">
-                  Playlists
+                <ion-item menu-close href="#/app/logout" ng-click="main.selectMenu('logout')">
+                  Logout
                 </ion-item>
               </ion-list>
             </ion-content>

@@ -1,4 +1,4 @@
-<ion-view title="Posts" id="page2" class=" ">
+<ion-view title="myPosts" id="page10" class=" ">
     <ion-content padding="true" class="has-header">
         <ion-refresher
             pulling-text="Pull to refresh..."
@@ -18,20 +18,17 @@
             </p>
             <p>              
               <img class="coin-size" src="images/coin.png"></img>
-              <a href="#" class="subdued">{{post.post.amount}} Coins</a>              
-              <a href="#" class="subdued">{{post.totalCoin}} Funded</a>
+              <a href="#" class="subdued">{{post.post.amount_expected}} Coins</a>
+              <a href="#" class="subdued">5 Comments</a>
             </p>
           </div>
 
           <div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" ng-click="showPopup(post.post)" >
+            <a class="tab-item" ng-click="showPopup()" >
               <i class="icon ion-heart"></i>
-              Fund
+              Transfer
             </a>
-            <a class="tab-item" href="#">
-              <i class="icon ion-chatbox"></i>
-              Comment
-            </a>
+            
             <a class="tab-item" href="#">
               <i class="icon ion-share"></i>
               Share

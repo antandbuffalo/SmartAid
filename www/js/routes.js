@@ -23,6 +23,13 @@ angular.module('app.routes', [])
         controller: 'postsCtrl'
   })
 
+  .state('myposts', {
+    url: '/myposts',
+        templateUrl: 'templates/myposts.html',
+        controller: 'mypostsCtrl'
+  })
+
+
   .state('addcoin', {
     url: '/addcoin',
         templateUrl: 'templates/AddCoin.html',

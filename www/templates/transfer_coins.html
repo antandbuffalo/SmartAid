@@ -26,8 +26,29 @@
               </label>
             </div>
 
-          <div class="list">
+            <div class="list">
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Select Post
+              </div>
+              <select ng-model="selectedPost" ng-change="postChanged(selectedPost)">
+                <option ng-repeat="post in myPosts" value="{{post.post.id}}">{{post.post.description}}</option>
+              </select>
+            </label>
+          </div>
 
+          <div class="list">
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Select Funder
+                </div>
+                <select ng-model="selectedCoin" ng-change="coinChanged(selectedCoin)">
+                  <option ng-repeat="coinAll in currentPost.coins" value="{{coinAll.coin.id}}">{{coinAll.user.name}}</option>
+                </select>
+              </label>
+          </div>
+
+          <div class="list">
               <label class="item item-input item-select">
                 <div class="input-label">
                   Bank
@@ -38,9 +59,7 @@
                   <option value="ocbc">ODBC</option>
                 </select>
               </label>
-
-            </div>
-
+          </div>
 
               <a  id="login-button1" class=" button button-stable  button-block " ng-click="transfer()">Transfer</a>
 
