@@ -1,8 +1,20 @@
-angular.module('app').controller('loginCtrl', function($scope, mainService) {
+angular.module('app').controller('loginCtrl', function($scope,$ionicLoading, mainService) {
   $scope.main.showNavButton = true;
+  $scope.req = {};
+
   $scope.login = function() {
 
-  	var PassPhrase = "The Moon is a Harsh Mistress.";
+
+  		
+  		
+  		// if($scope.req.un == "" && $scope.req.pwd == ""){
+  		// 	$ionicLoading.show({ template: 'Please enter Username and Password', noBackdrop: true, duration: 1000 });
+  		// }else{
+  		// 	$ionicLoading.show({ template: 'Login call', noBackdrop: true, duration: 1000 });
+  		// }
+
+
+  	    /*var PassPhrase = "The Moon is a Harsh Mistress.";
         var Bits = 512;
         
         console.log("Matt's passphrase: " + PassPhrase);
@@ -67,7 +79,8 @@ angular.module('app').controller('loginCtrl', function($scope, mainService) {
         console.log("The signature public key string:");
         console.log(DecryptionResult_sam.publicKeyString);        
         console.log("The signature public key ID:");
-        console.log(cryptico.publicKeyID(DecryptionResult_sam.publicKeyString));  
+        console.log(cryptico.publicKeyID(DecryptionResult_sam.publicKeyString));  */
+
 
     
   };

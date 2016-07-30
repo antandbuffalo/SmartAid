@@ -10,15 +10,15 @@
 
                 <label class="item item-input " id="login-input1">
                     <span class="input-label">Username</span>
-                    <input type="text" placeholder="Email/phone">
+                    <input type="text" placeholder="Email/phone" value="" ng-model="req.un">
                 </label>
                 <label class="item item-input " id="login-input2">
                     <span class="input-label">Password</span>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password"  value="" ng-model="req.pwd">
                 </label>
             </ion-list>
             <div class="spacer" style="height: 40px;"></div>
-            <a ui-sref="tabsController.posts" id="login-button1" class=" button button-stable  button-block " ng-click="login()">Log in</a>
+            <a  id="login-button1" class=" button button-stable  button-block " ng-click="login()">Log in</a>
             <a ui-sref="signup" id="login-button2" class=" button button-positive  button-block button-clear ">Or create an account</a>
         </form>
     </ion-content>
