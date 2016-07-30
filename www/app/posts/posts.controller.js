@@ -1,4 +1,6 @@
 angular.module('app').controller('postsCtrl', function($scope, mainService) {
+	$scope.main.isLogin = false;
+	$scope.main.newPostButton = true;
 
 	$scope.request = {
 		"image": "",
@@ -22,8 +24,17 @@ angular.module('app').controller('postsCtrl', function($scope, mainService) {
 	    });		
 	}
 
+	$scope.$on('$ionicView.enter', function() {
+		$scope.main.isLogin = false;
+		$scope.main.newPostButton = true;
+	});
+
+	$scope.$on('$ionicView.leave', function() {
+		$scope.main.newPostButton = false;
+	});
+
   function init() {
-  	$scope.refreshPosts();
+  	$scope.refreshPosts();  	
   }
   init();
 });

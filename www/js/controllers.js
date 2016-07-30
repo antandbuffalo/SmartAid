@@ -68,3 +68,25 @@ angular.module('app.controllers', [])
 	 	}
 	 });
 })
+
+
+
+
+.controller('signupController', function($scope, $ionicLoading, $state, mainService) {
+	 $scope.request = {};
+
+	 $scope.register = function() {
+	 	console.log($scope.request);
+	 	var requestUrl = "http://smartaid-nodejstechdemo.rhcloud.com/users";
+	 	$scope.main.spinner = true;
+	 	mainService.initiatePostService(requestUrl, $scope.request).then(function() {
+	 		console.log("registered successfully");
+	 		$state.go("login");
+	 		$scope.main.spinner = false;
+
+	 	}, function(error) {	 		
+	 		$scope.main.spinner = false;
+	 	});
+	 };
+
+})
