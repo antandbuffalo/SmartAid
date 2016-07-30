@@ -1,4 +1,4 @@
-angular.module('app').controller('mainController', function($scope, $ionicModal, Upload, mainService) {
+angular.module('app').controller('mainController', function($rootScope, $scope, $ionicModal, Upload, mainService) {
   $scope.main = {};
   $scope.main.spinner = false;
   $scope.main.isLogin = false;
@@ -15,24 +15,32 @@ $ionicModal.fromTemplateUrl('app/posts/create/create.html', {
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
-  $scope.fileTest = function() {
+  $scope.main.fileTest = function() {
   	//alert($scope.main.postRequest.file);
   };
-  $scope.createPost = function() {
-	var request = {
-		"image": "",
-		"description": $scope.main.postRequest.description,
-		"amount_expected": $scope.main.postRequest.amount_expected
-	};
+  $scope.main.createPost = function() {
+  	var request = {
+  		"image": "",
+  		"description": $scope.main.postRequest.description,
+  		"amount": $scope.main.postRequest.amount
+  	};
+    $scope.main.spinner = true;
 
-  	Upload.base64DataUrl($scope.main.postRequest.file).then(function(urls){
-  		request.image = urls;
-		mainService.initiatePostService("http://myapp-nodejstechdemo.rhcloud.com/posts", request).then(function(success) {
-			console.log("posted");
-		}, mainService.errorCall);
-  	});
+  	Upload.base64DataUrl($scope.main.postRequest.image).then(function(urls){
+  	 request.image = urls;
+      var requestUrl = "http://smartaid-nodejstechdemo.rhcloud.com/posts";      
 
+      request.token = $rootScope.user.token;
+      console.log(request);
+      mainService.initiatePostService(requestUrl, request).then(function(data) {
+        $scope.closeModal();
+        console.log(data);      
+        $scope.main.spinner = false;
 
+      }, function(error) {      
+        $scope.main.spinner = false;
+      });
+    });
   };
   // Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {

@@ -1,8 +1,8 @@
 
-angular.module('app').controller('loginCtrl', function($scope,$state,$ionicLoading, mainService) {
+angular.module('app').controller('loginCtrl', function($rootScope,$scope,$state,$ionicLoading, mainService) {
  
    $scope.main.isLogin = true;
-  $scope.req = {};
+   $scope.req = {};
 
 
   $scope.login = function() {
@@ -84,9 +84,34 @@ angular.module('app').controller('loginCtrl', function($scope,$state,$ionicLoadi
         console.log("The signature public key ID:");
         console.log(cryptico.publicKeyID(DecryptionResult_sam.publicKeyString));  */
 
+        var requestUrl = "http://smartaid-nodejstechdemo.rhcloud.com/login";
+	 	$scope.main.spinner = true;
+	 	console.log($scope.req);
+	 	var req = {
+	 		"email": $scope.req.un || "rajini@gmail.com",
+	 		"password": $scope.req.pwd || "rajini"
+	 	}
+	 	mainService.initiatePostService(requestUrl, req).then(function(data) {
+	 		
+	 		console.log(data);
+	 		if(data.message != "Failed"){
+	 			$rootScope.user = data.user;
+	 			$state.go("posts");
+	 		}else{
+	 			$ionicLoading.show({ template: 'Login Failed', noBackdrop: true, duration: 1000 });
+	 		}
+	 		
+	 		$scope.main.spinner = false;
+
+	 	}, function(error) {	 		
+	 		$scope.main.spinner = false;
+
+	 	});
 
 
-        $state.go("posts");
+
+
+        //$state.go("posts");
     
   };
     $scope.$on('$ionicView.enter', function() {

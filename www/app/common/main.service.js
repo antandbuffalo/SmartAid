@@ -22,7 +22,7 @@ angular.module('app').service('mainService', function($q, $http) {
         data: inputData,
         headers: {'Content-Type': 'application/json'}
       }).then(function successCallback(response) {
-          deferred.resolve(response);
+          deferred.resolve(response.data);
         }, function errorCallback(response) {
           console.log(response);
           deferred.reject(response);

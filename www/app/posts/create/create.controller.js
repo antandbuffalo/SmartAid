@@ -1,11 +1,21 @@
-angular.module('app').controller('createController', function($scope, mainService) {
+angular.module('app').controller('createController', function($rootScope,$scope, mainService) {
 
 
   function init() {
-    mainService.initiateGetService("http://myapp-nodejstechdemo.rhcloud.com/posts").then(function(success) {
-      $scope.posts = success;
-      console.log(success);
-    }, mainService.errorCall);
+    
+ 		var requestUrl = "http://smartaid-nodejstechdemo.rhcloud.com/posts";
+	 	$scope.main.spinner = true;
+
+	 	$scope.postRequest.token = $rootScope.token;
+       mainService.initiatePostService(requestUrl, $scope.postRequest).then(function(data) {
+	 		
+	 		console.log(data);	 		
+	 		$scope.main.spinner = false;
+
+	 	}, function(error) {	 		
+	 		$scope.main.spinner = false;
+	 	});
+
   }
   init();
 });
