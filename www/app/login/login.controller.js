@@ -1,6 +1,9 @@
-angular.module('app').controller('loginCtrl', function($scope,$ionicLoading, mainService) {
-  $scope.main.showNavButton = true;
+
+angular.module('app').controller('loginCtrl', function($scope,$state,$ionicLoading, mainService) {
+ 
+   $scope.main.isLogin = true;
   $scope.req = {};
+
 
   $scope.login = function() {
 
@@ -82,8 +85,17 @@ angular.module('app').controller('loginCtrl', function($scope,$ionicLoading, mai
         console.log(cryptico.publicKeyID(DecryptionResult_sam.publicKeyString));  */
 
 
+
+        $state.go("posts");
     
   };
+    $scope.$on('$ionicView.enter', function() {
+        $scope.main.isLogin = true;
+    });
+
+    $scope.$on('$ionicView.leave', function() {
+        $scope.main.isLogin = false;
+    });
 //some comments added
   $scope.$on("$destroy", function() {
     $scope.main.showNavButton = true;

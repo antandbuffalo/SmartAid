@@ -1,7 +1,8 @@
 angular.module('app').controller('mainController', function($scope, $ionicModal, Upload, mainService) {
   $scope.main = {};
   $scope.main.spinner = false;
-  $scope.main.showNavButton = true;
+  $scope.main.isLogin = false;
+  $scope.main.newPostButton = false;
   $scope.main.postRequest = {};
   
 

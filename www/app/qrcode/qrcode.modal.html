@@ -1,0 +1,18 @@
+<ion-modal-view>
+	<ion-header-bar align-title="center" class="bar-calm">
+	  <div class="buttons">
+	    <button class="button" ng-click="closeModal()">Close</button>
+	  </div>
+	  <h1 class="title">Scan</h1>
+	</ion-header-bar>
+	<ion-content class="has-header qrimage">
+		<qrcode data="{{qrcodeData}}" size="300"></qrcode>
+	</ion-content>
+</ion-modal-view>
+
+<style type="text/css">
+	.qrimage {
+		text-align: center; 
+		margin-top: 20px;
+	}
+</style>

@@ -13,16 +13,19 @@ angular.module('app').service('mainService', function($q, $http) {
       return deferred.promise;
     };
 
-    this.initiatePostService = function(url, data) {
+    this.initiatePostService = function(requestUrl, inputData) {
+
       var deferred = $q.defer();
-      $http.post({
-        method: 'GET',
-        url: url,
-        data: data || {}
+      $http({
+        method: 'POST',
+        url: requestUrl,
+        data: inputData,
+        headers: {'Content-Type': 'application/json'}
       }).then(function successCallback(response) {
           deferred.resolve(response);
         }, function errorCallback(response) {
-        deferred.reject(response);
+          console.log(response);
+          deferred.reject(response);
       });
       return deferred.promise;
     };

@@ -16,7 +16,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('transferCoinsController', function($scope, mainService) {
+.controller('transferCoinsController', function($scope, $ionicModal, mainService) {
 	$scope.request = {};
 
 	$scope.request.selectedBank = "dbs";
@@ -27,10 +27,27 @@ angular.module('app.controllers', [])
 			$ionicLoading.show({ template: 'Coins Transferred', noBackdrop: true, duration: 3000 });
 
 	 	}, mainService.errorCall);
-
 	};
 
+	$scope.transferOffline = function() {
+		$scope.qrcodeData = $scope.request.coinsToTransfer * 10;
+		$scope.modal.show();
+	};
+
+	$ionicModal.fromTemplateUrl('app/qrcode/qrcode.modal.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modal = modal;
+	  });
+
+	  $scope.closeModal = function() {
+	    $scope.modal.hide();
+	 };
+
 })
+
+
 
 .controller('addcoinController', function($scope, $ionicLoading, $filter, mainService) {
 	 $scope.request = {};
@@ -50,4 +67,26 @@ angular.module('app.controllers', [])
 	 		$scope.actualAmount = $scope.coins * 10;
 	 	}
 	 });
+})
+
+
+
+
+.controller('signupController', function($scope, $ionicLoading, $state, mainService) {
+	 $scope.request = {};
+
+	 $scope.register = function() {
+	 	console.log($scope.request);
+	 	var requestUrl = "http://smartaid-nodejstechdemo.rhcloud.com/users";
+	 	$scope.main.spinner = true;
+	 	mainService.initiatePostService(requestUrl, $scope.request).then(function() {
+	 		console.log("registered successfully");
+	 		$state.go("login");
+	 		$scope.main.spinner = false;
+
+	 	}, function(error) {	 		
+	 		$scope.main.spinner = false;
+	 	});
+	 };
+
 })
